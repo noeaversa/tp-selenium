@@ -20,10 +20,23 @@ app.get('/', (req, res) => {
     res.send(formulario)
 })
 
+app.get('/descripcion', (req, res) => {
+    let navbar = "<a href='/home'>Inicio</a>"
+        navbar += "<br>"
+        navbar += "<a href='/productos'>Productos</a>"
+        navbar += "<br>"
+        navbar += "<a href='/descripcion'>Descripcion</a>"
+    let descripcion = "<h1>Descripcion</h1>"
+        descripcion += "<p>Esta pagina agrega productos :)</p>"
+    res.send(navbar + descripcion)
+})
+
 app.get('/home', (req, res) => {
     let navbar = "<a href='/home'>Inicio</a>"
         navbar += "<br>"
         navbar += "<a href='/productos'>Productos</a>"
+        navbar += "<br>"
+        navbar += "<a href='/descripcion'>Descripcion</a>"
     let home = "<h1>Bienvenido a la pagina de inicio</h1>"
     res.send(navbar + home)
 })
@@ -32,6 +45,8 @@ app.get('/productos', (req, res) => {
     let navbar = "<a href='/home'>Inicio</a>"
         navbar += "<br>"
         navbar += "<a href='/productos'>Productos</a>"
+        navbar += "<br>"
+        navbar += "<a href='/descripcion'>Descripcion</a>"
     let formulario = "<form action='/productos' method='post'>"
         formulario += "<input type='text' name='nombre_producto' placeholder='Ingrese el nombre del producto'>"
         formulario += "<input type='text' name='descripcion' placeholder='Ingrese la descripcion del producto'>"
