@@ -12,41 +12,46 @@ app.use(bodyParser.urlencoded({ extended: true }))
 app.use(bodyParser.json())
 
 app.get('/', (req, res) => {
+    let title = "<title>Log In</title>"
     let formulario = "<form action='/ingreso' method='post'>"
     formulario += "<input type='email' name='email' id='email' placeholder='Ingrese su email'>"
     formulario += "<input type='password' name='password' id='password' placeholder='Ingrese su contraseña'>"
     formulario += "<input type='submit' value='Enviar'>"
     formulario += "</form>"
-    res.send(formulario)
+    res.send(title + formulario)
 })
 
 app.get('/descripcion', (req, res) => {
-    let navbar = "<a href='/home'>Inicio</a>"
+    let title = "<title>Descripcion</title>"
+    let navbar = "<a id='home' href='/home'>Inicio</a>"
         navbar += "<br>"
-        navbar += "<a href='/productos'>Productos</a>"
+        navbar += "<a id='productos' href='/productos'>Productos</a>"
         navbar += "<br>"
-        navbar += "<a href='/descripcion'>Descripcion</a>"
+        navbar += "<a id='descripcion' href='/descripcion'>Descripcion</a>"
     let descripcion = "<h1>Descripcion</h1>"
         descripcion += "<p>Esta pagina agrega productos :)</p>"
-    res.send(navbar + descripcion)
+    res.send(title + navbar + descripcion)
 })
 
 app.get('/home', (req, res) => {
-    let navbar = "<a href='/home'>Inicio</a>"
+    let title = "<title>Home</title>"
+    let navbar = "<a id='home' href='/home'>Inicio</a>"
         navbar += "<br>"
-        navbar += "<a href='/productos'>Productos</a>"
+        navbar += "<a id='productos' href='/productos'>Productos</a>"
         navbar += "<br>"
-        navbar += "<a href='/descripcion'>Descripcion</a>"
+        navbar += "<a id='descripcion' href='/descripcion'>Descripcion</a>"
     let home = "<h1>Bienvenido a la pagina de inicio</h1>"
-    res.send(navbar + home)
+    home += "<button><a id='goOut' href='/'>salir de la pagina</a></button>"
+    res.send(title + navbar + home)
 })
 
 app.get('/productos', (req, res) => {
-    let navbar = "<a href='/home'>Inicio</a>"
+    let title = "<title>Productos</title>"
+    let navbar = "<a id='home' href='/home'>Inicio</a>"
         navbar += "<br>"
-        navbar += "<a href='/productos'>Productos</a>"
+        navbar += "<a id='productos' href='/productos'>Productos</a>"
         navbar += "<br>"
-        navbar += "<a href='/descripcion'>Descripcion</a>"
+        navbar += "<a id='descripcion' href='/descripcion'>Descripcion</a>"
     let formulario = "<form action='/productos' method='post'>"
         formulario += "<input type='text' name='nombre_producto' placeholder='Ingrese el nombre del producto'>"
         formulario += "<input type='text' name='descripcion' placeholder='Ingrese la descripcion del producto'>"
@@ -54,10 +59,10 @@ app.get('/productos', (req, res) => {
         formulario += "<input type='number' name='cantidad' placeholder='Ingrese la cantidad del producto'>"
         formulario += "<input type='submit' value='Enviar'>"
         formulario += "</form>"
-    res.send(navbar + formulario)
+    res.send(title + navbar + formulario)
 })
+
 app.post('/ingreso', (req, res) => {
-    console.log(req.body)
     if(req.body.email != usuarios.email || req.body.password != usuarios.password){
         let malInicio = "<h1>Usuario o contraseña incorrectos</h1>"
         malInicio += "<a href='/'>Volver a ingresar</a>"
@@ -71,9 +76,11 @@ app.post('/productos', (req, res) => {
     if(req.body.nombre_producto == '' || req.body.descripcion == '' || req.body.precio == '' || req.body.cantidad == ''){
         res.redirect('/productos')
     }
-    let navbar = "<a href='/home'>Inicio</a>"
+    let navbar = "<a id='home' href='/home'>Inicio</a>"
         navbar += "<br>"
-        navbar += "<a href='/productos'>Productos</a>"
+        navbar += "<a id='productos' href='/productos'>Productos</a>"
+        navbar += "<br>"
+        navbar += "<a id='descripcion' href='/descripcion'>Descripcion</a>"
     let producto = "<h1>Producto creado</h1>"
     res.send(navbar + producto)
 })
