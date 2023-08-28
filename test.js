@@ -24,7 +24,7 @@ const driver = new Builder()
   });
 
   it('inicio sesión correctamente', async function () {
-    await driver.get('http://localhost:9090/');
+    await driver.get('https://service-tp-selenium.onrender.com/');
     await driver.sleep(1000);
     const titulo = await driver.getTitle();
     assert.strictEqual(titulo, 'Log In');
@@ -35,7 +35,7 @@ const driver = new Builder()
   });
 
   it('carga la página de inicio correctamente', async function () {
-    await driver.get('http://localhost:9090/home')
+    await driver.get('https://service-tp-selenium.onrender.com/home')
     await driver.sleep(1000);
     const titulo = await driver.getTitle();
     assert.strictEqual(titulo, 'Home');
@@ -47,7 +47,7 @@ const driver = new Builder()
         {id: 'descripcion', titulo: 'Descripcion'},
         {id: 'home', titulo: 'Home'}
     ];
-    await driver.get('http://localhost:9090/home');
+    await driver.get('https://service-tp-selenium.onrender.com/home');
     for (const enlace of enlances) {
         await driver.findElement(By.id(enlace.id)).click();
         await driver.sleep(1000);
@@ -57,7 +57,7 @@ const driver = new Builder()
   });
 
   it('funciona la página de productos correctamente', async function () {
-    await driver.get('http://localhost:9090/productos')
+    await driver.get('https://service-tp-selenium.onrender.com/productos')
     await driver.sleep(1000);
     const titulo = await driver.getTitle();
     assert.strictEqual(titulo, 'Productos');
@@ -86,7 +86,7 @@ const driver = new Builder()
   });
 
   it('sale de la cuenta correctamente', async function () {
-    await driver.get('http://localhost:9090/home')
+    await driver.get('https://service-tp-selenium.onrender.com/home')
     await driver.sleep(1000);
     const titulo = await driver.getTitle();
     assert.strictEqual(titulo, 'Home');
