@@ -1,0 +1,23 @@
+userName: noeliaaversa_i69eaV
+accessKey: FDTxRWjFiAyW3bp9AGyj
+platforms:
+  - os: Windows
+    osVersion: 11
+    browserName: Chrome
+    browserVersion: 103.0
+  - os: Windows
+    osVersion: 10
+    browserName: Firefox
+    browserVersion: 102.0
+  - os: OS X
+    osVersion: Big Sur
+    browserName: Safari
+    browserVersion: 14.1
+parallelsPerPlatform: 1
+browserstackLocal: true
+buildName: bstack-demo
+buildIdentifier: ${BUILD_NUMBER}
+projectName: TP TESTING
+testObservability: true
+networkLogs: true
+consoleLogs: info

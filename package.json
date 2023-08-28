@@ -1,6 +1,9 @@
 {
   "dependencies": {
+    "assert": "^2.0.0",
     "body-parser": "^1.20.2",
+    "browserstack-cli": "^0.4.0",
+    "browserstack-webdriver": "^2.41.1",
     "chromedriver": "^116.0.0",
     "cors": "^2.8.5",
     "express": "^4.18.2",
@@ -10,12 +13,16 @@
   "version": "1.0.0",
   "main": "form.js",
   "scripts": {
-    "start": "node index.js"
+    "start": "node index.js",
+    "postinstall": "npm update browserstack-node-sdk",
+    "start-browserstack": "browserstack-node-sdk node index.js",
+    "test-browserstack": "browserstack-node-sdk mocha"
   },
   "author": "",
   "license": "ISC",
   "description": "",
   "devDependencies": {
+    "browserstack-node-sdk": "^1.26.0",
     "mocha": "^10.2.0"
   }
 }
